@@ -434,7 +434,12 @@ const genWakeups = () => {
       )
     }
     else {
-      pText += ("$" + balanceToString(parseInt(transfer.data.data.amount) - 25) + " to transferred Venmo account <span class='transfer-id'>" + transfer.data.data.id + "</span>")
+      if (Math.abs(moment(transfer.time).diff(moment(), "minutes")) < 5) {
+        pText += ("$" + balanceToString(parseInt(transfer.data.data.amount) - 25) + " to transferred Venmo account (" + (transfer.data.data.phone) + ") <span class='transfer-id'>" + transfer.data.data.id + "</span> <span class='transfer-status pending'>Processing</span>")
+      }
+      else {
+        pText += ("$" + balanceToString(parseInt(transfer.data.data.amount) - 25) + " to transferred Venmo account (" + (transfer.data.data.phone) + ") <span class='transfer-id'>" + transfer.data.data.id + "</span> <span class='transfer-status sent'>Complete</span>")
+      }
     }
     p.innerHTML = pText
     const pSpan = p.querySelector("span")

@@ -66,11 +66,6 @@ const updateTransferButton = () => {
   else {
     button.removeAttribute("disabled")
   }
-  //FIXME: remove when Venmo working
-  if (DESTINATION === 1) {
-    button.setAttribute("disabled", true)
-    button.innerHTML = "Coming Next Week"
-  }
 }
 
 const balanceToString = (balance = BALANCE) => {
@@ -260,7 +255,7 @@ const transferSuccess = () => {
   title.style.marginBottom = "24px"
   let text = document.createElement("p")
   if (DESTINATION === 1) {
-    text.innerHTML = ("Your <b>$" + balanceToString($("#transfer-slider")[0].value - 25) + "</b> transfer to Venmo was successful. The funds will show up in your Venmo account shortly.")
+    text.innerHTML = ("Your <b>$" + balanceToString($("#transfer-slider")[0].value - 25) + "</b> transfer to Venmo was successful. The funds will show up in your Venmo account within the next few minutes.")
   }
   else {
     text.innerHTML = ("Your <b>$" + balanceToString($("#transfer-slider")[0].value) + "</b> bank transfer was initiated successfully. The funds will show up in your bank account within <b>1 to 3 business days</b>.")
@@ -311,6 +306,7 @@ const setBankData = (data = {}) => {
   }
   if (BANK_DATA.phone && BANK_DATA.phone.length) {
     $("#phone")[0].value = BANK_DATA.phone
+    phoneFormatter($("#phone")[0])
   }
 }
 
@@ -350,7 +346,7 @@ const confirmTransfer = (onSuccess = () => {}, onError = () => {}) => {
   elements.push(title)
   let text = document.createElement("p")
   if (DESTINATION === 1) {
-    text.innerHTML = ("Are you sure you want to transfer <b>$" + balanceToString($("#transfer-slider")[0].value - 25) + "</b> to your Venmo account?")
+    text.innerHTML = ("Are you sure you want to transfer <b>$" + balanceToString($("#transfer-slider")[0].value - 25) + "</b> to your Venmo account, <b style='white-space: nowrap;'>+1 " + $("#phone")[0].value.toString() + "</b>?")
   }
   else {
     text.innerHTML = ("Are you sure you want to transfer <b>$" + balanceToString($("#transfer-slider")[0].value) + "</b> to your bank account?")
@@ -381,5 +377,18 @@ const confirmTransfer = (onSuccess = () => {}, onError = () => {}) => {
 const goToSchedulePage = () => {
   leavePage("./schedule")
 }
+
+const parseSearch = () => {
+  let url = (new URL(window.location.href))
+  if (url.searchParams.get("method") === "venmo") {
+    url.searchParams.delete("search")
+    window.history.replaceState(null, null, url.toString())
+    $(document).ready(() => {
+      selectDestination($("#destination-1")[0])
+    })
+  }
+}
+
+parseSearch()
 
 fetchBankData()

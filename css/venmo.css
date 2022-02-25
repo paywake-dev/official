@@ -97,13 +97,15 @@ span.gradient {
 
 #big-phone-container {
   width: 100vw;
-  max-width: 500px;
   position: absolute;
   box-sizing: border-box;
   top: calc(360px - 20vw);
   right: 0px;
   z-index: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 #big-phone {

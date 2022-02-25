@@ -378,4 +378,17 @@ const goToSchedulePage = () => {
   leavePage("./schedule")
 }
 
+const parseSearch = () => {
+  let url = (new URL(window.location.href))
+  if (url.searchParams.get("method") === "venmo") {
+    url.searchParams.delete("search")
+    window.history.replaceState(null, null, url.toString())
+    $(document).ready(() => {
+      selectDestination($("#destination-1")[0])
+    })
+  }
+}
+
+parseSearch()
+
 fetchBankData()

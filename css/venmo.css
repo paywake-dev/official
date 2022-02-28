@@ -88,7 +88,7 @@ span.gradient {
 }
 
 .footer > p, .footer > div.wrapper > a {
-  color: rgba(0,0,0,0.6) !important;
+  color: rgba(255,255,255,0.3) !important;
 }
 
 .__dev-banner {

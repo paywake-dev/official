@@ -274,9 +274,18 @@ p.left {
   border-radius: 11px;
 }
 
+.option.__new.selected::before {
+  background: rgba(102,0,255,1);
+}
+
+
 .option.__new.__twox-mode::before {
   background: rgb(0,179,255);
   background: -moz-linear-gradient(340deg, rgba(0,179,255,1) 0%, rgba(0,255,0,1) 100%);
   background: -webkit-linear-gradient(340deg, rgba(0,179,255,1) 0%, rgba(0,255,0,1) 100%);
   background: linear-gradient(340deg, rgba(0,179,255,1) 0%, rgba(0,255,0,1) 100%);
+}
+
+.option.__new.__twox-mode.selected::before {
+  background: rgba(0,179,255,1);
 }

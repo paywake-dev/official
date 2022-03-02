@@ -256,7 +256,7 @@ video::-webkit-media-controls-current-time-display {}
   position: fixed;
   box-sizing: border-box;
   bottom: 70px;
-  left: 34px;
+  left: 30px;
   outline: none;
   border: none;
   opacity: 1;

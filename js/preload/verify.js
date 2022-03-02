@@ -1,6 +1,6 @@
 const FRAME_RATE = 14 //1/2 ~30FPS
 const CAPTURE_DIMENSION = 300
-const BACKUP_CHALLENGE = "a "
+const BACKUP_CHALLENGE = "a shower head" //FIXME
 const MAX_CHALLENGE_SWITCHES = 3 //max refreshes
 
 const LOCAL_TIME_ZONE = moment.tz.guess()
@@ -15,6 +15,16 @@ const VIDEO_CONSTRAINTS = {
   video: {
     facingMode: "environment"
   }
+}
+
+const refreshDismiss = () => {
+  refreshChallenge()
+  MODAL.hide()
+}
+
+const help = () => {
+  MODAL.hide()
+  MODAL.displayHTML("<p><b>Don't have " + CHALLENGE + "?</b> Click <a class='gradient' onclick='refreshDismiss()'>here</a> to get a different item.</p><p>Having trouble with photo verification? Contact us at <a class='gradient' href='mailto:support@paywake.net'>support@paywake.net</a></p>")
 }
 
 const malformedCamera = () => {
@@ -222,13 +232,13 @@ const setWakeups = (data = []) => {
           delay = 3000
         }
         setTimeout(() => {
-          leavePage()
+          //leavePage()
         }, delay)
       }
     }, (1000 / FRAME_RATE))
   }
   else {
-    leavePage()
+    //leavePage()
   }
 }
 

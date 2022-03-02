@@ -1,6 +1,6 @@
 const FRAME_RATE = 14 //1/2 ~30FPS
 const CAPTURE_DIMENSION = 300
-const BACKUP_CHALLENGE = "a shower head" //FIXME
+const BACKUP_CHALLENGE = "a "
 const MAX_CHALLENGE_SWITCHES = 3 //max refreshes
 
 const LOCAL_TIME_ZONE = moment.tz.guess()
@@ -232,13 +232,13 @@ const setWakeups = (data = []) => {
           delay = 3000
         }
         setTimeout(() => {
-          //leavePage()
+          leavePage()
         }, delay)
       }
     }, (1000 / FRAME_RATE))
   }
   else {
-    //leavePage()
+    leavePage()
   }
 }
 

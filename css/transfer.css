@@ -259,7 +259,7 @@ p.left {
 .option.__new::before {
   content: "New";
   position: absolute;
-  top: 248px;
+  top: 250px;
   right: max(calc(20vw - 37.5px - 8px), calc(50vw - 30vh - 75px - 8px));
   padding: 6px 8px;
   box-sizing: border-box;

@@ -505,7 +505,7 @@ const missedClick = (node, wakeup) => {
   title.innerHTML = "Verification Missed"
   title.style.marginBottom = "24px"
   let text = document.createElement("p")
-  text.innerHTML = ("You missed the photo verification window for this wakeup (<b>" + m.format("h:mm a") + "</b> to <b>" + m.add(3, "minutes").format("h:mm a") + "</b>) and were charged $" + Math.floor(wakeup.deposit / 100).toString() + ".00 USD.")
+  text.innerHTML = ("You missed the photo verification window for this wakeup (<b>" + m.format("h:mm a") + "</b> to <b>" + m.add(3, "minutes").format("h:mm a") + "</b>) and were charged $" + Math.floor((wakeup.is2x ? (wakeup.deposit / 2) : wakeup.deposit) / 100).toString() + ".00 USD.")
   let b = node.querySelector("b")
   b.onclick = () => {}
   b.style.cursor = "default"

@@ -263,6 +263,7 @@ p.left {
   right: max(calc(20vw - 37.5px - 8px), calc(50vw - 30vh - 75px - 8px));
   padding: 6px 8px;
   box-sizing: border-box;
+  background: red;
   background: -moz-linear-gradient(340deg, rgba(102,0,255,1) 0%, rgba(255,0,0,1) 100%);
   background: -webkit-linear-gradient(340deg, rgba(102,0,255,1) 0%, rgba(255,0,0,1) 100%);
   background: linear-gradient(340deg, rgba(102,0,255,1) 0%, rgba(255,0,0,1) 100%);
@@ -271,4 +272,11 @@ p.left {
   line-height: 10px;
   font-weight: bold;
   border-radius: 11px;
+}
+
+.option.__new.__twox-mode::before {
+  background: rgb(0,179,255);
+  background: -moz-linear-gradient(340deg, rgba(0,179,255,1) 0%, rgba(0,255,0,1) 100%);
+  background: -webkit-linear-gradient(340deg, rgba(0,179,255,1) 0%, rgba(0,255,0,1) 100%);
+  background: linear-gradient(340deg, rgba(0,179,255,1) 0%, rgba(0,255,0,1) 100%);
 }

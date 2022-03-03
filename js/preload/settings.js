@@ -505,7 +505,7 @@ const missedClick = (node, wakeup) => {
   title.innerHTML = "Verification Missed"
   title.style.marginBottom = "24px"
   let text = document.createElement("p")
-  text.innerHTML = ("You missed the photo verification window for this wakeup (<b>" + m.format("h:mm a") + "</b> to <b>" + m.add(3, "minutes").format("h:mm a") + "</b>) and were charged $" + Math.floor(wakeup.deposit / 100).toString() + ".00 USD.")
+  text.innerHTML = ("You missed the photo verification window for this wakeup (<b>" + m.format("h:mm a") + "</b> to <b>" + m.add(3, "minutes").format("h:mm a") + "</b>) and were charged $" + Math.floor((wakeup.is2x ? (wakeup.deposit / 2) : wakeup.deposit) / 100).toString() + ".00 USD.")
   let b = node.querySelector("b")
   b.onclick = () => {}
   b.style.cursor = "default"
@@ -567,7 +567,7 @@ const cancelWakeup = (wakeup, node) => {
   let dollars = Math.floor(fee / 100)
   let cents = Math.floor(fee % 100)
   if (fee > 0) {
-    text.innerHTML = ("Are you sure you want to cancel this wakeup? A cancellation fee of $" + dollars.toString() + "." + cents.toString().padStart(2, "0") + " will be deducted from your Paywake balance.")
+    text.innerHTML = ("Are you sure you want to cancel this wakeup? A cancellation fee of <b>$" + dollars.toString() + "." + cents.toString().padStart(2, "0") + "</b> will be deducted from your Paywake balance.")
   }
   else {
     text.innerHTML = "Are you sure you want to cancel this wakeup?"
@@ -686,5 +686,61 @@ const display2XWakeup = (node) => {
   elements.push(text)
   MODAL.display(elements)
 }
+
+const deleteUser = () => {
+  let elements = []
+  let title = document.createElement("h3")
+  title.innerHTML = "Confirm Account Termination"
+  elements.push(title)
+  let text = document.createElement("p")
+  text.innerHTML = ("Are you sure you want to delete your Paywake account? <b>This action is irreversible.</b><br><br>To confirm deletion, type 'delete' below:")
+  elements.push(text)
+  let input = document.createElement("input")
+  input.style.width = "min(calc(60vw + 75px), calc(60vh + 150px))"
+  input.placeholder = "Type here..."
+  input.id = "delete-input"
+  input.style.marginBottom = "30px"
+  elements.push(input)
+  let group = document.createElement("div")
+  group.className = "button-group"
+  let goback = document.createElement("button")
+  goback.innerHTML = "Go Back"
+  goback.className = "transparent"
+  let confirm = document.createElement("button")
+  confirm.innerHTML = "Delete Account"
+  confirm.style.backgroundColor = "red"
+  confirm.id = "__modal-dismiss"
+  group.appendChild(goback)
+  group.appendChild(confirm)
+  elements.push(group)
+  goback.onclick = () => {
+    MODAL.hide()
+  }
+  confirm.onclick = () => {
+    if (input.value.toLowerCase() === "delete") {
+      confirm.className = "loading"
+      $.ajax({
+        url: (API + "/clearUser"),
+        type: "PUT",
+        xhrFields: {
+          withCredentials: true
+        },
+        beforeSend: (xhr) => {
+          xhr.setRequestHeader("Authorization", ID_TOKEN)
+        },
+        success: (data) => {
+          ROUTINES.delete((err) => {
+            ROUTINES.logout()
+          })
+        },
+      })
+    }
+    else {
+      input.style.borderColor = "red"
+    }
+  }
+  MODAL.display(elements)
+}
+
 
 fetchHistory()

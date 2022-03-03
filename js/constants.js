@@ -24,6 +24,7 @@ const ANTI_CLEARS = [ //Local storage which isn't cleared on logout
   "wakeup-thu",
   "wakeup-fri",
   "wakeup-sat",
+  "has-account"
 ]
 const NOTIFICATION_STRING_2X = "2xnotify"
 let IS_2X = false
@@ -278,6 +279,16 @@ $(document).ready(() => {
   }
   catch (e) {}
 });
+
+
+$(document).ready(() => {
+  try {
+    if (USER) {
+      localStorage.setItem(LOCAL_STORAGE_TAG + "has-account", "true")
+    }
+  } catch (e) {}
+})
+
 
 __scamNotice()
 console.log("\u00A9 " + YEAR.toString() + " Paywake Corporation")

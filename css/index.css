@@ -702,3 +702,10 @@ div.checkbox.checked.__twox-mode {
   background-image: url("../assets/images/hide-password-dark.png");
   opacity: 0.2;
 }
+
+div.__dev-banner.__twox-mode {
+  background: rgb(0,179,255);
+  background: -moz-linear-gradient(340deg, rgba(0,179,255,1) 0%, rgba(0,255,0,1) 100%);
+  background: -webkit-linear-gradient(340deg, rgba(0,179,255,1) 0%, rgba(0,255,0,1) 100%);
+  background: linear-gradient(340deg, rgba(0,179,255,1) 0%, rgba(0,255,0,1) 100%);
+}

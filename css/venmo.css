@@ -88,7 +88,7 @@ span.gradient {
 }
 
 .footer > p, .footer > div.wrapper > a {
-  color: rgba(0,0,0,0.6) !important;
+  color: rgba(255,255,255,0.3) !important;
 }
 
 .__dev-banner {
@@ -97,13 +97,15 @@ span.gradient {
 
 #big-phone-container {
   width: 100vw;
-  max-width: 500px;
   position: absolute;
   box-sizing: border-box;
   top: calc(360px - 20vw);
   right: 0px;
   z-index: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 #big-phone {
@@ -133,7 +135,7 @@ span.gradient {
 }
 
 #powered {
-  opacity: 0.2;
+  opacity: 0.3;
 }
 
 #powered > p {
@@ -143,4 +145,10 @@ span.gradient {
 
 #powered > p > img {
   width: 100px;
+}
+
+span.gradient.__twox-mode {
+  background-image: -moz-linear-gradient(340deg, rgba(0,179,255,1) 0%, rgba(0,255,0,1) 50%, rgba(199,255,0,1) 100%) !important;
+  background-image: -webkit-linear-gradient(340deg, rgba(0,179,255,1) 0%, rgba(0,255,0,1) 50%, rgba(199,255,0,1) 100%) !important;
+  background-image: linear-gradient(340deg, rgba(0,179,255,1) 0%, rgba(0,255,0,1) 50%, rgba(199,255,0,1) 100%) !important;
 }

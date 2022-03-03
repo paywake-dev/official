@@ -17,6 +17,16 @@ const VIDEO_CONSTRAINTS = {
   }
 }
 
+const refreshDismiss = () => {
+  refreshChallenge()
+  MODAL.hide()
+}
+
+const help = () => {
+  MODAL.hide()
+  MODAL.displayHTML("<p><b>Don't have " + CHALLENGE + "?</b> Click <a class='gradient' onclick='refreshDismiss()'>here</a> to get a different item.</p><p>Having trouble with photo verification? Contact us at <a class='gradient' href='mailto:support@paywake.net'>support@paywake.net</a></p>")
+}
+
 const malformedCamera = () => {
   MODAL.hide()
   MODAL.displayHTML("<p>" + (__COPYSHEET.get("verify-malformed-camera") || "We weren't able to access your device's camera. Please reattempt verification on a <b>different device</b>.") + "</p>")

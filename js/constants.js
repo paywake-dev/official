@@ -24,6 +24,7 @@ const ANTI_CLEARS = [ //Local storage which isn't cleared on logout
   "wakeup-thu",
   "wakeup-fri",
   "wakeup-sat",
+  "has-account"
 ]
 const NOTIFICATION_STRING_2X = "2xnotify"
 let IS_2X = false

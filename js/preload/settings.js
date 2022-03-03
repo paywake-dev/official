@@ -687,4 +687,60 @@ const display2XWakeup = (node) => {
   MODAL.display(elements)
 }
 
+const deleteUser = () => {
+  let elements = []
+  let title = document.createElement("h3")
+  title.innerHTML = "Confirm Account Termination"
+  elements.push(title)
+  let text = document.createElement("p")
+  text.innerHTML = ("Are you sure you want to delete your Paywake account? <b>This action is irreversible.</b><br><br>To confirm deletion, type 'delete' below:")
+  elements.push(text)
+  let input = document.createElement("input")
+  input.style.width = "min(calc(60vw + 75px), calc(60vh + 150px))"
+  input.placeholder = "Type here..."
+  input.id = "delete-input"
+  input.style.marginBottom = "30px"
+  elements.push(input)
+  let group = document.createElement("div")
+  group.className = "button-group"
+  let goback = document.createElement("button")
+  goback.innerHTML = "Go Back"
+  goback.className = "transparent"
+  let confirm = document.createElement("button")
+  confirm.innerHTML = "Delete Account"
+  confirm.style.backgroundColor = "red"
+  confirm.id = "__modal-dismiss"
+  group.appendChild(goback)
+  group.appendChild(confirm)
+  elements.push(group)
+  goback.onclick = () => {
+    MODAL.hide()
+  }
+  confirm.onclick = () => {
+    if (input.value.toLowerCase() === "delete") {
+      confirm.className = "loading"
+      $.ajax({
+        url: (API + "/clearUser"),
+        type: "PUT",
+        xhrFields: {
+          withCredentials: true
+        },
+        beforeSend: (xhr) => {
+          xhr.setRequestHeader("Authorization", ID_TOKEN)
+        },
+        success: (data) => {
+          ROUTINES.delete((err) => {
+            ROUTINES.logout()
+          })
+        },
+      })
+    }
+    else {
+      input.style.borderColor = "red"
+    }
+  }
+  MODAL.display(elements)
+}
+
+
 fetchHistory()

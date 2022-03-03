@@ -169,4 +169,16 @@ const ROUTINES = {
     }
   },
 
+  //DELETE ACCOUNT
+  delete: (callback = (() => {})) => {
+    USER.deleteUser((err, result) => {
+      if (err) {
+        callback(err)
+      }
+      else {
+        callback(null)
+      }
+    })
+  },
+
 }

@@ -279,6 +279,16 @@ $(document).ready(() => {
   catch (e) {}
 });
 
+
+$(document).ready(() => {
+  try {
+    if (USER) {
+      localStorage.setItem(LOCAL_STORAGE_TAG + "has-account", "true")
+    }
+  } catch (e) {}
+})
+
+
 __scamNotice()
 console.log("\u00A9 " + YEAR.toString() + " Paywake Corporation")
 

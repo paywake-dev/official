@@ -544,8 +544,11 @@ const schedule = () => {
           const wakeup = WAKEUPS[c]
           const m = moment.tz(EPOCH, LOCAL_TIME_ZONE).add(wakeup.day, "days").add(Math.floor(wakeup.time / 60), "hours").add(wakeup.time % 60, "minutes").tz(TIME_ZONE)
           let hour = parseInt(m.get("hour"))
-          if (m.isDST()) {
+          if (m.format("MM/DD") === "03/13") { //CHANGE THESE EVERY YEAR
             hour -= 2
+          }
+          else if (m.format("MM/DD") === "11/06") {
+            hour += 2
           }
           const minute = parseInt(m.get("minute"))
           const time = ((hour * 60) + minute)

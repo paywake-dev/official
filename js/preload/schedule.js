@@ -543,7 +543,10 @@ const schedule = () => {
           const cardToken = token.card.id
           const wakeup = WAKEUPS[c]
           const m = moment.tz(EPOCH, LOCAL_TIME_ZONE).add(wakeup.day, "days").add(Math.floor(wakeup.time / 60), "hours").add(wakeup.time % 60, "minutes").tz(TIME_ZONE)
-          const hour = parseInt(m.get("hour"))
+          let hour = parseInt(m.get("hour"))
+          if (m.isDST()) {
+            hour -= 2
+          }
           const minute = parseInt(m.get("minute"))
           const time = ((hour * 60) + minute)
           const sendData = {

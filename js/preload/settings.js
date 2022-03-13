@@ -248,6 +248,11 @@ const genWakeups = () => {
     const missed = ((m.add(3, "minutes").add(10, "seconds").diff(moment()) < 0) && !wakeup.verified)
     const is2x = wakeup.is2x
 
+    //DST patch
+    if (wakeup.day === 19064 && wakeup.time < (540 + 1)) {
+      wakeup.verified = true
+    }
+
     let parent = document.createElement("div")
     parent.id = ("wakeup-" + wakeup.id)
     parent.className = "wakeup"

@@ -4,13 +4,17 @@ const AUTH = () => {
   }
   $(document).ready(() => {
     USER.getUserAttributes((err, result) => {
-      if (err && err.message === "User is disabled.") {
-        try {
-          MODAL.banned()
-        } catch (e) {}
-      }
-      else if (err && err.message === "Access Token has been revoked") {
+      if (err && (err.message === "Access Token has been revoked" || err.message === "User is disabled.")) {
         ROUTINES.logout()
+      }
+      else {
+        for (const attribute of result) {
+          if (attribute.Name === "profile" && attribute.Value === "true") {
+            try {
+              MODAL.banned()
+            } catch (e) {}
+          }
+        }
       }
     })
   })

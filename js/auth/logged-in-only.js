@@ -2,6 +2,22 @@ const AUTH = () => {
   if (!SESSION) {
     window.location.href = REDIRECTS.noAuth
   }
+  $(document).ready(() => {
+    USER.getUserAttributes((err, result) => {
+      if (err && (err.message === "Access Token has been revoked" || err.message === "User is disabled.")) {
+        ROUTINES.logout()
+      }
+      else {
+        for (const attribute of result) {
+          if (attribute.Name === "profile" && attribute.Value === "true") {
+            try {
+              MODAL.banned()
+            } catch (e) {}
+          }
+        }
+      }
+    })
+  })
 }
 
 (() => {
@@ -22,7 +38,9 @@ const AUTH = () => {
           const diff = Math.max(Math.floor(time.diff(moment()) / 1000), 0)
           if (diff > 0 && diff < ((60 * 3) + 2)) {
             if (!window.location.href.toString().includes("verify")) {
-              leavePage("./verify")
+              if (!MODAL.isBanned) {
+                leavePage("./verify")
+              }
             }
           }
         }

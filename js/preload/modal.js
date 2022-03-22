@@ -14,6 +14,11 @@ const MODAL = {
     }
   },
   hide: () => {
+    if (MODAL.isBanned) {
+      try {
+        ROUTINES.logout()
+      } catch (e) {}
+    }
     if (MODAL.visible) {
       MODAL.visible = false
       const backdrop = document.getElementById("__modal-backdrop")
@@ -55,13 +60,6 @@ const MODAL = {
     dismiss.id = "__modal-dismiss"
     dismiss.onclick = () => {
       MODAL.hide()
-    }
-    if (MODAL.isBanned) {
-      dismiss.onclick = () => {
-        try {
-          ROUTINES.logout()
-        } catch (e) {}
-      }
     }
     group.appendChild(dismiss)
     modal.appendChild(group)

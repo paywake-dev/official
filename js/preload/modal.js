@@ -1,5 +1,6 @@
 const MODAL = {
   visible: false,
+  isBanned: false,
   show: () => {
     if (!MODAL.visible) {
       MODAL.visible = true
@@ -55,6 +56,13 @@ const MODAL = {
     dismiss.onclick = () => {
       MODAL.hide()
     }
+    if (MODAL.isBanned) {
+      dismiss.onclick = () => {
+        try {
+          ROUTINES.logout()
+        } catch (e) {}
+      }
+    }
     group.appendChild(dismiss)
     modal.appendChild(group)
   },
@@ -65,7 +73,12 @@ const MODAL = {
   displayHTML: (html = "") => {
     MODAL.setHTML(html)
     MODAL.show()
-  }
+  },
+  banned: () => {
+    MODAL.hide()
+    MODAL.isBanned = true
+    MODAL.displayHTML("<h3>Legal Notice</h3><p style='font-size:14px'>You have been permanently banned from Paywake for <b>fraudulent use of our services.</b><br><br>Fraudulent use includes but is not limited to: the creation and use of multiple/duplicate accounts, using fake phone numbers to create one or more accounts, and using bots or VPNs to circumvent our security and/or verification measures.<br><br>Any attempts to circumvent your permanent ban, such as creating another Paywake account, <b>will be met with swift and immediate legal action from our team.</b><br><br>If you believe and have sufficient evidence that this ban is erroneous, please contact us at <a class='gradient' href='mailto:appeals@paywake.net'>appeals@paywake.net</a>.</p>")
+  },
 }
 
 $(window).on("load", () => {

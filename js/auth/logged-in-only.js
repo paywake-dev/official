@@ -2,6 +2,18 @@ const AUTH = () => {
   if (!SESSION) {
     window.location.href = REDIRECTS.noAuth
   }
+  $(document).ready(() => {
+    USER.getUserAttributes((err, result) => {
+      if (err && err.message === "User is disabled.") {
+        try {
+          MODAL.banned()
+        } catch (e) {}
+      }
+      else if (err && err.message === "Access Token has been revoked") {
+        ROUTINES.logout()
+      }
+    })
+  })
 }
 
 (() => {

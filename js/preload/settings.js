@@ -452,7 +452,7 @@ const genWakeups = () => {
       selectID(pSpan)
     }
     $("#transfer-container")[0].appendChild(p)
-    if (((transfer.data.data.status || "pending") === "pending" || ((transfer.data.data.status || "pending") === "sent")) && transfer.data.data.success) {
+    if ((((transfer.data.data.status || "pending") === "pending" || ((transfer.data.data.status || "pending") === "sent")) && transfer.data.data.success) && transfer.data.data.type === "BANK") {
       fetchTransferStatus(transfer)
     }
   }
@@ -629,6 +629,7 @@ const numberWithCommas = (n) => {
 
 const setTransferStatus = (transfer, data) => {
   const ORIGINAL_STATUS = transfer.data.data.status
+  console.log(ORIGINAL_STATUS)
   for (let index in FLAT_HISTORY) {
     if (FLAT_HISTORY[index].data.data.event === "TRANSFER") {
       if (FLAT_HISTORY[index].data.data.id === transfer.data.data.id) {

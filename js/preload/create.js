@@ -98,7 +98,7 @@ const createAccount = () => {
             phoneNumberExists()
           }
           else if (err.code === "UserLambdaValidationException") {
-            grecaptcha.reset()
+            grecaptcha.reset(0)
             recaptchaError()
           }
           else {
@@ -225,7 +225,7 @@ const setRecaptchaTokenSecond = (token) => {
     RECAPTCHA_TOKEN,
     (err) => {
       if (err) {
-        grecaptcha.reset()
+        grecaptcha.reset(1)
         localStorage.setItem(LOCAL_STORAGE_TAG + "screen", (5).toString())
         setScreen(5)
       }

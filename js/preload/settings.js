@@ -629,7 +629,6 @@ const numberWithCommas = (n) => {
 
 const setTransferStatus = (transfer, data) => {
   const ORIGINAL_STATUS = transfer.data.data.status
-  console.log(ORIGINAL_STATUS)
   for (let index in FLAT_HISTORY) {
     if (FLAT_HISTORY[index].data.data.event === "TRANSFER") {
       if (FLAT_HISTORY[index].data.data.id === transfer.data.data.id) {

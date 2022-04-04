@@ -508,6 +508,23 @@ const noCard = () => {
   USING_CARD_ON_FILE = false;
 }
 
+const getDSTSwitches = (year) => {
+  const switches = []
+  const m = moment().set("date", 1).set("month", 0).set("hour", 12)
+  if (year) {
+    m.set("year", year)
+  }
+  while (!m.isDST()) {
+    m.add(1, "day")
+  }
+  switches.push(m.format("MM/DD"))
+  while (m.isDST()) {
+    m.add(1, "day")
+  }
+  switches.push(m.format("MM/DD"))
+  return switches
+}
+
 const schedule = () => {
   if (NUM_SELECTED_DAYS > 0) {
     $("#__modal-dismiss").addClass("loading")
@@ -544,10 +561,10 @@ const schedule = () => {
           const wakeup = WAKEUPS[c]
           const m = moment.tz(EPOCH, LOCAL_TIME_ZONE).add(wakeup.day, "days").add(Math.floor(wakeup.time / 60), "hours").add(wakeup.time % 60, "minutes").tz(TIME_ZONE)
           let hour = parseInt(m.get("hour"))
-          if (m.format("MM/DD") === "03/13") { //CHANGE THESE EVERY YEAR
+          if (m.format("MM/DD") === getDSTSwitches()[0]) {
             hour -= 2
           }
-          else if (m.format("MM/DD") === "11/06") {
+          else if (m.format("MM/DD") === getDSTSwitches()[1]) {
             hour += 2
           }
           const minute = parseInt(m.get("minute"))

@@ -20,9 +20,9 @@ const slider = (obj) => {
     historic = CHART_RETURN
   }
   const deposit = Math.round(obj.value)
-  let returns = (((Math.floor(deposit * ((historic / 100) + 1) * 100) / 100)) - 0.01)
+  let returns = Math.min(((Math.floor(deposit * ((historic / 100) + 1) * 100) / 100)) - 0.01, 0.01)
   if (IS_2X) {
-    returns = (((Math.floor(deposit * (((historic / 100) * 2) + 1) * 100) / 100)) - 0.01);
+    returns = Math.min(((Math.floor(deposit * (((historic / 100) * 2) + 1) * 100) / 100)) - 0.01, 0.01);
   }
   document.getElementById("deposit-amount").innerHTML = deposit.toString()
   document.getElementById("return-amount").innerHTML = (Math.floor(returns) || 0).toString()

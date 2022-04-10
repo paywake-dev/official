@@ -61,8 +61,6 @@ const PHONE_PARA = 5
 const IS_MOBILE = mobileCheck()
 if (IS_MOBILE) {
   $(document).ready(() => {
-    $("#phone-in-hand-graphic")[0].src = "./assets/images/phone-in-hand-fixed.png"
-    $("#screenshot")[0].remove()
     $("#photo-verification-hand-2")[0].style.transform = "translateY(-400px)"
   })
 }
@@ -70,12 +68,10 @@ $(window).scroll(() => {
   const scroll = $(window).scrollTop()
   try {
     if (!IS_MOBILE) {
-      $(".phone-block").css("transform", ("translateY(-" + (scroll / HAND_PARA).toString() + "px)"))
-      $("#screenshot").css("transform", ("translateY(-" + ((scroll / HAND_PARA) + (scroll / SCREEN_PARA)).toString() + "px)"))
-      $("#schedule-phone").css("transform", ("translateY(" + (Math.max(Math.min(((scroll - 600) / (PHONE_PARA)) - 60, 200), -120) * (-1)).toString() + "px)"))
-      $("#paid-phone").css("transform", ("translateY(" + (Math.max(Math.min(((scroll - 1950) / (PHONE_PARA)) - 120, 200), -120) * (-1)).toString() + "px)"))
-      $("#photo-verification-hand-2").css("transform", "translateY(-" + Math.max(Math.min((150 + ((scroll - 1500) / HAND_PARA)), 300), 0).toString() + "px)")
-      $("#photo-verification-hand-1").css("transform", "translateY(" + Math.max(Math.min((0 + ((scroll - 1500) / (HAND_PARA * 2))), 100), 0).toString() + "px)")
+      $("#schedule-phone").css("transform", ("translateY(" + (Math.max(Math.min((((scroll + 100 + 360) - 600) / (PHONE_PARA)) - 60, 200), -120) * (-1)).toString() + "px)"))
+      $("#paid-phone").css("transform", ("translateY(" + (Math.max(Math.min((((scroll + 100 + 360 + 150) - 1950) / (PHONE_PARA)) - 120, 200), -120) * (-1)).toString() + "px)"))
+      $("#photo-verification-hand-2").css("transform", "translateY(-" + Math.max(Math.min((150 + (((scroll + 100 + 360 + 150) - 1500) / HAND_PARA)), 300), 0).toString() + "px)")
+      $("#photo-verification-hand-1").css("transform", "translateY(" + Math.max(Math.min((0 + (((scroll + 100 + 360 + 150) - 1500) / (HAND_PARA * 2))), 100), 0).toString() + "px)")
     }
   }
   catch (e) {

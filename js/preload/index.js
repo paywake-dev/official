@@ -94,7 +94,7 @@ const fetchEarnings = () => {
 
 
 const MATRIX_SIZE = window.innerWidth * 2
-const MATRIX_FLIP_CHANCE = 0.02
+const MATRIX_FLIP_CHANCE = 0.03
 const MATRIX_LAG = 70
 
 let matrixNums = []

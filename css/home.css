@@ -238,7 +238,7 @@ span.gradient {
 }
 
 #matrix {
-  color: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.072);
   position: relative;
   top: -100px;
   left: min(calc(37.5px - 20vw), calc(30vh + 75px - 50vw));
@@ -294,7 +294,6 @@ span.gradient {
   left: min(calc(37.5px - 20vw), calc(30vh + 75px - 50vw));
   bottom: -6px;
 }
-
 
 .splash > .dark > .container {
   position: relative;

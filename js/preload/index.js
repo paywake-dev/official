@@ -92,4 +92,25 @@ const fetchEarnings = () => {
   })
 }
 
+
+const MATRIX_SIZE = 10000
+const MATRIX_FLIP_CHANCE = 0.02
+const MATRIX_LAG = 70
+
+let matrixNums = []
+const initMatrix = () => {
+  for (let i = 0; i < MATRIX_SIZE; i++) {
+    matrixNums.push(Math.round(Math.random()))
+  }
+}
+
+const setMatrix = () => {
+  let s = ""
+  for (let n of matrixNums) {
+    s += n.toString()
+  }
+  $("#matrix")[0].innerHTML = s
+}
+
+initMatrix()
 fetchEarnings()

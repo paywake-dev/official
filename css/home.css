@@ -224,3 +224,83 @@ span.gradient {
   width: 100vw;
   box-sizing: border-box;
 }
+
+.splash > .dark {
+  background: black;
+  width: 100vw;
+  margin-left: min(calc(37.5px - 20vw), calc(30vh + 75px - 50vw));
+  color: white;
+  padding-left: max(calc(-37.5px + 20vw), calc(-30vh + -75px + 50vw));
+  padding-right: max(calc(-37.5px + 20vw), calc(-30vh + -75px + 50vw));
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 2;
+}
+
+#matrix {
+  color: rgba(255,255,255,0.072);
+  position: relative;
+  top: -100px;
+  left: min(calc(37.5px - 20vw), calc(30vh + 75px - 50vw));
+  width: calc(100vw + 100px);
+  transform: translateX(-50px);
+  word-break: break-all;
+  white-space: normal;
+  height: 0px;
+  z-index: 0;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: monospace;
+  font-size: 30px;
+  line-height: 27px;
+  font-weight: bold;
+  font-family: "Source Code Pro", monospace;
+}
+
+.splash > .dark > .container > h1 {
+  width: min(calc(60vw + 75px), calc(60vh + 150px));
+  box-sizing: border-box;
+  color: white;
+  font-size: 55px;
+  line-height: 52px;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  margin: 0px;
+}
+
+.splash > .dark > .container > h3 {
+  width: min(calc(60vw + 75px), calc(60vh + 150px));
+  box-sizing: border-box;
+  font-size: 20px;
+  line-height: 30px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  margin: 0px;
+  margin-top: 20px;
+  color: rgba(255,255,255,1);
+}
+
+#tear {
+  width: 100vw;
+  position: relative;
+  left: min(calc(37.5px - 20vw), calc(30vh + 75px - 50vw));
+  top: 0px;
+}
+
+#tear-bottom {
+  width: 140vw;
+  position: relative;
+  left: min(calc(37.5px - 20vw), calc(30vh + 75px - 50vw));
+  bottom: -6px;
+}
+
+.splash > .dark > .container {
+  position: relative;
+}
+
+@media only screen and (min-width: 800px) {
+  #tear-bottom {
+    margin-top: calc(10vh - 10vw);
+  }
+}

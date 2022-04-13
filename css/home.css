@@ -111,7 +111,7 @@
   font-weight: 300;
   margin: 0px;
   margin-top: 20px;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.7);
 }
 
 #schedule-phone {
@@ -278,7 +278,7 @@ span.gradient {
   font-weight: 300;
   margin: 0px;
   margin-top: 20px;
-  color: rgba(255,255,255,1);
+  color: rgba(255,255,255,0.7);
 }
 
 #tear {

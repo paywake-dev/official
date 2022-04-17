@@ -289,7 +289,7 @@ span.gradient {
 }
 
 #tear-bottom {
-  width: 140vw;
+  width: 100vw;
   position: relative;
   left: min(calc(37.5px - 20vw), calc(30vh + 75px - 50vw));
   bottom: -6px;

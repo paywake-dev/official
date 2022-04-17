@@ -68,10 +68,10 @@ $(window).scroll(() => {
   const scroll = $(window).scrollTop()
   try {
     if (!IS_MOBILE) {
-      $("#schedule-phone").css("transform", ("translateY(" + (Math.max(Math.min((((scroll + 100 + 360) - 600) / (PHONE_PARA)) - 60, 200), -120) * (-1)).toString() + "px)"))
-      $("#paid-phone").css("transform", ("translateY(" + (Math.max(Math.min((((scroll + 100 + 360 + 150) - 1950) / (PHONE_PARA)) - 120, 200), -120) * (-1)).toString() + "px)"))
-      $("#photo-verification-hand-2").css("transform", "translateY(-" + Math.max(Math.min((150 + (((scroll + 100 + 360 + 150) - 1500) / HAND_PARA)), 300), 0).toString() + "px)")
-      $("#photo-verification-hand-1").css("transform", "translateY(" + Math.max(Math.min((0 + (((scroll + 100 + 360 + 150) - 1500) / (HAND_PARA * 2))), 100), 0).toString() + "px)")
+      $("#schedule-phone").css("transform", ("translateY(" + (Math.max(Math.min((((scroll + 120 + 360) - 600) / (PHONE_PARA)) - 60, 200), -120) * (-1)).toString() + "px)"))
+      $("#paid-phone").css("transform", ("translateY(" + (Math.max(Math.min((((scroll + 120 + 360 + 150) - 1950) / (PHONE_PARA)) - 120, 200), -120) * (-1)).toString() + "px)"))
+      $("#photo-verification-hand-2").css("transform", "translateY(-" + Math.max(Math.min((150 + (((scroll + 120 + 360 + 150) - 1500) / HAND_PARA)), 300), 0).toString() + "px)")
+      $("#photo-verification-hand-1").css("transform", "translateY(" + Math.max(Math.min((0 + (((scroll + 120 + 360 + 150) - 1500) / (HAND_PARA * 2))), 100), 0).toString() + "px)")
     }
   }
   catch (e) {

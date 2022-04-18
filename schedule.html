@@ -20,31 +20,27 @@
     <meta name="apple-mobile-web-app-title" content="Paywake">
     <meta http-equiv="Content-Security-Policy" content="
       script-src
-        *
-        paywake.net
-        *.paywake.net
+        'self'
+        'unsafe-inline'
+        'unsafe-eval'
         https://js.stripe.com
         https://checkout.stripe.com;
       style-src
-        *
-        paywake.net
-        *.paywake.net
+        'self'
+        'unsafe-inline'
         checkout.stripe.com;
       frame-src
-        paywake.net
-        *.paywake.net
+        'self'
         *.stripe.com
         *.stripe.network;
       img-src
         data:
-        *
-        paywake.net
-        *.paywake.net
+        'self'
+        'unsafe-inline'
         *.stripe.com;
       connect-src
-        paywake.net
-        *.paywake.net
-        *.paywake.net
+        'self'
+        *
         *.stripe.com;">
 
     <!--ICON / THEME-->

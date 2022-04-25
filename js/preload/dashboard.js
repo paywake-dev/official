@@ -266,7 +266,8 @@ const setWakeups = (data = []) => {
     const hour = m.format("h")
     const minute = m.format("mm")
     const date = m.format("MMMM Do")
-    const ampm = m.format("a").toLowerCase()
+    //const ampm = m.format("a").toLowerCase()
+    const ampm = "am"
     const fromNow = m.fromNow()
     const missed = ((m.add(3, "minutes").diff(moment()) < 0) && !wakeup.verified)
     const is2x = wakeup.is2x

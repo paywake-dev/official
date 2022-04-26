@@ -7,13 +7,13 @@ const LOCAL_TIME_ZONE = moment.tz.guess()
 
 const DEFAULT_WAKEUP_TIME = 480
 const MIN_WAKEUP_TIME = 300
-const MAX_WAKEUP_TIME = 600
+const MAX_WAKEUP_TIME = 660
 
 let DAY_2X = (parseInt(localStorage.getItem(LOCAL_STORAGE_TAG + "2x-day")) || 0)
 
 const displayTimeNotice = () => {
   const p = document.createElement("p")
-  p.innerHTML = "You can only use Paywake to wake up between <b>5 am</b> and <b>10 am</b>."
+  p.innerHTML = "You can only use Paywake to wake up between <b>5 am</b> and <b>11 am</b>."
   MODAL.display([p])
 }
 

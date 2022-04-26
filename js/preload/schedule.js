@@ -7,20 +7,20 @@ const LOCAL_TIME_ZONE = moment.tz.guess()
 
 const DEFAULT_WAKEUP_TIME = 480
 const MIN_WAKEUP_TIME = 300
-const MAX_WAKEUP_TIME = 600
+const MAX_WAKEUP_TIME = 660
 
 let DAY_2X = (parseInt(localStorage.getItem(LOCAL_STORAGE_TAG + "2x-day")) || 0)
 
 const displayTimeNotice = () => {
   const p = document.createElement("p")
-  p.innerHTML = "You can only use Paywake to wake up between <b>5 am</b> and <b>10 am</b>."
+  p.innerHTML = "You can only use Paywake to wake up between <b>5 am</b> and <b>11 am</b>."
   MODAL.display([p])
 }
 
 const setWakeupHour = (wakeup, obj) => {
   const hour = Math.floor(wakeup.time / 60)
   const minute = (wakeup.time % 60)
-  const updatedHour = Math.min(Math.max(obj.value, 5), 10)
+  const updatedHour = Math.min(Math.max(obj.value, 5), 11)
   wakeup.time = Math.min(Math.max((updatedHour * 60) + minute, MIN_WAKEUP_TIME), MAX_WAKEUP_TIME)
   if (obj.value < Math.floor(MIN_WAKEUP_TIME / 60) || obj.value > Math.floor(MAX_WAKEUP_TIME / 60)) {
     displayTimeNotice()
@@ -96,10 +96,8 @@ const toggleDay = (obj) => {
   document.getElementById("mornings-amt").innerHTML = ("(" + c.toString() + ")")
   NUM_SELECTED_DAYS = c
   if (NUM_SELECTED_DAYS < 2) {
-    $("#deposit-slider").addClass("limited")
-    $("#deposit-notice").addClass("visible")
-    $("#deposit-slider")[0].value = Math.min($("#deposit-slider")[0].value, 10)
-    slider($("#deposit-slider")[0])
+    $("#deposit-slider").removeClass("limited")
+    $("#deposit-notice").removeClass("visible")
     if (IS_2X && SELECTED_DAYS[TOGGLE_2X_INDEX] === true && NUM_SELECTED_DAYS > 0) {
       $("#schedule-button")[0].innerHTML = "Schedule <span class='twoX'>2X</span> Wakeup"
     }
@@ -112,8 +110,6 @@ const toggleDay = (obj) => {
   else {
     $("#deposit-slider").removeClass("limited")
     $("#deposit-notice").removeClass("visible")
-    $("#deposit-slider")[0].value = (parseInt(localStorage.getItem(LOCAL_STORAGE_TAG + "deposit")) || 10)
-    slider($("#deposit-slider")[0])
     if (IS_2X && SELECTED_DAYS[TOGGLE_2X_INDEX] === true) {
       if (NUM_SELECTED_DAYS === 2) {
         $("#schedule-button")[0].innerHTML = ("Schedule 1 Wakeup + <span class='twoX'>2X</span> Wakeup")
@@ -138,13 +134,6 @@ const toggleDay = (obj) => {
 
 const slider = (obj, userInputted = false) => {
   let deposit = Math.round(obj.value)
-  if (NUM_SELECTED_DAYS < 2) {
-    if (deposit > 10) {
-      userInputted = false
-    }
-    deposit = Math.min(deposit, 10)
-    obj.value = deposit
-  }
   document.getElementById("deposit-amount").value = deposit.toString()
   adjustDepositInput(document.getElementById("deposit-amount"))
   if (userInputted) {

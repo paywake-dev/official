@@ -96,10 +96,8 @@ const toggleDay = (obj) => {
   document.getElementById("mornings-amt").innerHTML = ("(" + c.toString() + ")")
   NUM_SELECTED_DAYS = c
   if (NUM_SELECTED_DAYS < 2) {
-    $("#deposit-slider").addClass("limited")
-    $("#deposit-notice").addClass("visible")
-    $("#deposit-slider")[0].value = Math.min($("#deposit-slider")[0].value, 10)
-    slider($("#deposit-slider")[0])
+    $("#deposit-slider").removeClass("limited")
+    $("#deposit-notice").removeClass("visible")
     if (IS_2X && SELECTED_DAYS[TOGGLE_2X_INDEX] === true && NUM_SELECTED_DAYS > 0) {
       $("#schedule-button")[0].innerHTML = "Schedule <span class='twoX'>2X</span> Wakeup"
     }
@@ -112,8 +110,6 @@ const toggleDay = (obj) => {
   else {
     $("#deposit-slider").removeClass("limited")
     $("#deposit-notice").removeClass("visible")
-    $("#deposit-slider")[0].value = (parseInt(localStorage.getItem(LOCAL_STORAGE_TAG + "deposit")) || 10)
-    slider($("#deposit-slider")[0])
     if (IS_2X && SELECTED_DAYS[TOGGLE_2X_INDEX] === true) {
       if (NUM_SELECTED_DAYS === 2) {
         $("#schedule-button")[0].innerHTML = ("Schedule 1 Wakeup + <span class='twoX'>2X</span> Wakeup")

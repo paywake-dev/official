@@ -20,7 +20,7 @@ const displayTimeNotice = () => {
 const setWakeupHour = (wakeup, obj) => {
   const hour = Math.floor(wakeup.time / 60)
   const minute = (wakeup.time % 60)
-  const updatedHour = Math.min(Math.max(obj.value, 5), 10)
+  const updatedHour = Math.min(Math.max(obj.value, 5), 11)
   wakeup.time = Math.min(Math.max((updatedHour * 60) + minute, MIN_WAKEUP_TIME), MAX_WAKEUP_TIME)
   if (obj.value < Math.floor(MIN_WAKEUP_TIME / 60) || obj.value > Math.floor(MAX_WAKEUP_TIME / 60)) {
     displayTimeNotice()

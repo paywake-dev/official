@@ -134,13 +134,6 @@ const toggleDay = (obj) => {
 
 const slider = (obj, userInputted = false) => {
   let deposit = Math.round(obj.value)
-  if (NUM_SELECTED_DAYS < 2) {
-    if (deposit > 10) {
-      userInputted = false
-    }
-    deposit = Math.min(deposit, 10)
-    obj.value = deposit
-  }
   document.getElementById("deposit-amount").value = deposit.toString()
   adjustDepositInput(document.getElementById("deposit-amount"))
   if (userInputted) {

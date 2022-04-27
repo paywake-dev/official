@@ -184,7 +184,12 @@ const adjustDepositInput = (obj) => {
 
 const adjustHourInput = (obj) => {
   if (obj.value.toString().length === 2) {
-    obj.style.width = "36px"
+    if (obj.value.toString() === "11") {
+      obj.style.width = "24px"
+    }
+    else {
+      obj.style.width = "36px"
+    }
   }
   else {
     obj.style.width = "24px"

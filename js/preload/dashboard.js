@@ -616,7 +616,7 @@ const genEarningsChart = (data) => {
     }
     labels.push(moment().subtract(30,"day").format(labelFormat))
     labels.reverse()
-    let maxValue = Math.round(Math.max(...(data.earnings || []).map((e) => (e.earnings * 100))) + 2)
+    let maxValue = Math.round(Math.max(...(data.earnings || []).map((e) => (e.earnings * 100))) + 1)
     //$("#chart-last-day").text(moment().subtract(30,"day").format(labelFormat))
     $("#chart-last-day").text("")
     $("#chart-top-percent").text(maxValue.toString() + "%")
@@ -713,7 +713,7 @@ const genEarningsChart = (data) => {
                 color: "rgba(0,0,0,0)"
               },
               min: 0,
-              max: maxValue,
+              max: (maxValue + 1),
             },
           },
           plugins: {

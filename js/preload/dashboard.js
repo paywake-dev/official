@@ -662,6 +662,7 @@ const genEarningsChart = (data) => {
           datasets: [{
             pointRadius: 0,
             backgroundColor: backg,
+            clip: { top: 100, left: false, right: false, bottom: 100 },
             borderWidth: 8,
             borderColor: (context) => { return genGradient(context, 1) },
             fill: true,
@@ -695,7 +696,9 @@ const genEarningsChart = (data) => {
           responsive: true,
           animation: true,
           layout: {
-            padding: 0
+            padding: {
+              bottom: 16,
+            },
           },
           scales: {
             x: {
@@ -710,7 +713,7 @@ const genEarningsChart = (data) => {
                 color: "rgba(0,0,0,0)"
               },
               min: 0,
-              max: (maxValue + 2),
+              max: (maxValue + 1),
             },
           },
           plugins: {

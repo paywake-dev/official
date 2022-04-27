@@ -338,7 +338,7 @@ body.safari-toolbars-hidden > .toolbar-container {
 }
 
 #chart-bottom-bounds.hidden {
-  margin-bottom: 18px;
+  margin-bottom: 2px;
 }
 
 #chart-top-bounds.hidden, #chart-bottom-bounds.hidden {

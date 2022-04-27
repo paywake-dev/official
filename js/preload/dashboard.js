@@ -709,7 +709,7 @@ const genEarningsChart = (data) => {
               grid: {
                 color: "rgba(0,0,0,0)"
               },
-              min: 0,
+              min: (-1),
               max: (maxValue + 2),
             },
           },

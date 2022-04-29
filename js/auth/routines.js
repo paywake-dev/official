@@ -83,7 +83,7 @@ const ROUTINES = {
       for (let anticlear in anticlears) {
         localStorage.setItem(LOCAL_STORAGE_TAG + anticlear, anticlears[anticlear])
       }
-      window.location.href = REDIRECTS.home
+      window.location.href = REDIRECTS.noAuth
     }
     if (USER != null) {
       USER.getSession((err, session) => {
@@ -99,7 +99,7 @@ const ROUTINES = {
     }
     else {
       localStorage.clear()
-      window.location.href = REDIRECTS.home
+      window.location.href = REDIRECTS.noAuth
     }
   },
 

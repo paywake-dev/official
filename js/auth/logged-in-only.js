@@ -42,7 +42,7 @@ const AUTH = () => {
                 if (diff > 0 && diff < ((60 * 3) + 2)) {
                   leavePage("./verify")
                 }
-                else if (diff < ((60 * 3) + 2) && diff > (60 * (-10))) {
+                else if (diff > 0 && diff > (60 * (10))) {
                   setTimeout(() => {
                     leavePage("./verify")
                   }, ((diff * (-1000)) + 1000))

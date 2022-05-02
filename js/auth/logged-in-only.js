@@ -39,13 +39,13 @@ const AUTH = () => {
           if (!window.location.href.toString().includes("verify")) {
             if (!MODAL.isBanned) {
               if (!(new URLSearchParams(window.location.search)).get("verified")) {
-                if (diff > 0 && diff < ((60 * 3) + 2)) {
+                if (diff > 0 && diff < ((60 * 3) + 1)) {
                   leavePage("./verify")
                 }
                 else if (diff > 0 && diff < (60 * (10))) {
                   setTimeout(() => {
                     leavePage("./verify")
-                  }, ((diff * (-1000)) + 1000))
+                  }, ((diff * (1000)) + 1000))
                 }
               }
             }

@@ -608,6 +608,7 @@ const cancelWakeup = (wakeup, node) => {
       },
       success: (data) => {
         setTimeout(() => {
+          __triggerAppReload()
           window.location.reload()
         }, 1)
       },

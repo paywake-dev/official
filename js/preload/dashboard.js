@@ -175,6 +175,7 @@ const cancelWakeup = (wakeup, node) => {
       },
       success: (data) => {
         setTimeout(() => {
+          __triggerAppReload()
           window.location.reload()
         }, 1)
       },
@@ -435,6 +436,7 @@ const displayVerified = () => {
       }
     }
     window.history.replaceState(null, null, window.location.pathname + devAdd)
+    __triggerAppReload()
     document.getElementById("wakeup-" + wakeupID).querySelector("img").click()
   }
 }

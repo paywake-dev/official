@@ -531,6 +531,7 @@ const schedule = () => {
       else {
         localStorage.setItem(LOCAL_STORAGE_TAG + "wakeup-plural", "plural")
       }
+      __triggerAppReload()
       leavePage("./scheduled")
     }
     const error = () => {

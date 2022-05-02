@@ -35,11 +35,18 @@ const AUTH = () => {
       if (WAKEUP) {
         if (!WAKEUP.verified) {
           const time = moment.tz(EPOCH, TIME_ZONE).add(WAKEUP.day, "days").add(Math.floor(WAKEUP.time / 60), "hours").add(WAKEUP.time % 60, "minutes").add(3, "minutes").tz(LOCAL_TIME_ZONE)
-          const diff = Math.max(Math.floor(time.diff(moment()) / 1000), 0)
-          if (diff > 0 && diff < ((60 * 3) + 2)) {
-            if (!window.location.href.toString().includes("verify")) {
-              if (!MODAL.isBanned) {
-                leavePage("./verify")
+          const diff = Math.floor(time.diff(moment()) / 1000)
+          if (!window.location.href.toString().includes("verify")) {
+            if (!MODAL.isBanned) {
+              if (!(new URLSearchParams(window.location.search)).get("verified")) {
+                if (diff > 0 && diff < ((60 * 3) + 1)) {
+                  leavePage("./verify")
+                }
+                else if (diff > 0 && diff < (60 * (10))) {
+                  setTimeout(() => {
+                    leavePage("./verify")
+                  }, (((diff - (60 * 3)) * (1000)) + 1000))
+                }
               }
             }
           }

@@ -45,6 +45,8 @@ const REDIRECTS = {
   noAuth: "./login"
 }
 
+var __triggerAppReload = () => {}
+
 const __ensureInContinentalUS = () => {
   try {
     const __CONTINENTAL_PAGE = window.location.pathname.toLowerCase().trim().split("/").pop().split(".").shift()

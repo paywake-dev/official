@@ -22,6 +22,7 @@ const fetchBalance = (showGotPaid = true) => {
         if ((parseInt(local) < data.balance) && data.balance !== 0) {
           if (showGotPaid) {
             gotPaid(data.balance - parseInt(local))
+            __triggerAppReload()
           }
         }
       }

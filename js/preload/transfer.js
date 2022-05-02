@@ -264,6 +264,7 @@ const transferSuccess = () => {
   elements.push(title)
   elements.push(text)
   MODAL.display(elements)
+  __triggerAppReload()
   MODAL.hide = () => {
     MODAL.visible = false
     const backdrop = document.getElementById("__modal-backdrop")

@@ -124,6 +124,9 @@ const setHistory = (data) => {
     if (item.data.event === "SCHEDULE") {
       totalScheduled++
     }
+    else if (item.data.event === "CANCEL") {
+      totalScheduled--
+    }
   }
   $("#wakeup-count")[0].innerHTML = numberWithCommas(totalScheduled)
   let totalEarned = 0

@@ -2,6 +2,9 @@ const __worker2x = () => {
   const kill2XMode = () => {
     if (localStorage.getItem(LOCAL_STORAGE_TAG + "2x-mode") === "true") {
       localStorage.setItem(LOCAL_STORAGE_TAG + "2x-mode", "false")
+      try {
+        __triggerAppReload()
+      } catch (e) {}
       window.location.reload()
     }
   }
@@ -104,6 +107,9 @@ const __worker2x = () => {
           localStorage.setItem(LOCAL_STORAGE_TAG + "2x-day", (WAKEUP.day + 1).toString())
           if (localStorage.getItem(LOCAL_STORAGE_TAG + "2x-mode") !== "true") {
             localStorage.setItem(LOCAL_STORAGE_TAG + "2x-mode", "true")
+            try {
+              __triggerAppReload()
+            } catch (e) {}
             leavePage("./dashboard?" + url.searchParams.toString())
           }
         }

@@ -105,9 +105,9 @@
         <h1>Log in</h1>
         <h3>No account yet? <a href="./create">Create one.</a></h3>
         <br>
-        <input inputmode="numeric" pattern="[0-9]*" spellcheck="false" name="username" type="text" id="phone" class="phone" placeholder="(123) 456-7890" maxlength="14" onkeyup="phoneFormatter(this)" onpaste="phoneFormatter(this)" onblur="verifyPhone(this)">
+        <input inputmode="numeric" pattern="[0-9]*" spellcheck="false" name="username" type="text" id="phone" class="phone" placeholder="(123) 456-7890" maxlength="14" onkeyup="phoneFormatter(this)" onpaste="phoneFormatter(this)" onblur="verifyPhone(this)" autocomplete="username">
         <div id="__show-password-container">
-          <input id="password" type="password" placeholder="Password" name="password" maxlength="64" onblur="verifyPassword(this)" spellcheck="false">
+          <input id="password" type="password" placeholder="Password" name="password" maxlength="64" onblur="verifyPassword(this)" spellcheck="false" autocomplete="current-password">
           <div id="__show-password" target="#password"></div>
         </div>
         <input spellcheck="false" name="pin" type="password" id="devkey" maxlength="255" placeholder="Developer key" onblur="verifyDevKey(this)">

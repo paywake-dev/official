@@ -153,7 +153,7 @@
         <div class="screen unloaded bottom" id="screen-4">
           <h3>We texted you a 6-digit code.</h3>
           <h1>Verify your number</h1>
-          <input id="screen-3-input" inputmode="numeric" pattern="[0-9]*" type="text" name="otp-code" auto-complete="one-time-code" spellcheck="false" placeholder="Type your code here..." maxlength="6" onkeyup="codeFormatter(this)" onpaste="codeFormatter(this)" onblur="verifyCode(this)">
+          <input id="screen-3-input" inputmode="numeric" pattern="[0-9]*" type="text" name="otp-code" auto-complete="one-time-code" autocomplete="one-time-code" spellcheck="false" placeholder="Type your code here..." maxlength="6" onkeyup="codeFormatter(this)" onpaste="codeFormatter(this)" onblur="verifyCode(this)">
           <br>
           <div class="spread">
             <a id="pre-resend" class="back" onclick="resend()">Didn't get the code? <u>Resend</u></a>

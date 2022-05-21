@@ -291,6 +291,28 @@ $(document).ready(() => {
   } catch (e) {}
 })
 
+const __constructionNotice = () => {
+  try {
+    let elements = []
+    let center = document.createElement("div")
+    center.className = "center"
+    let img = document.createElement("img")
+    img.src = "assets/images/construction.png"
+    img.style.marginBottom = "32px"
+    center.appendChild(img)
+    let title = document.createElement("h3")
+    title.innerHTML = "Big things are coming."
+    title.style.marginBottom = "20px"
+    let text = document.createElement("p")
+    text.innerHTML = "Starting May 22nd, Paywake will be down for maintenance while we build our official app for iOS and Android. We'll notify you when the app is ready!<br><br>If you had any wakeups scheduled on or later than May 22nd, we've canceled them and refunded your deposit."
+    elements.push(center)
+    elements.push(title)
+    elements.push(text)
+    MODAL.display(elements)
+  } catch (e) {
+    console.log(e)
+  }
+}
 
 __scamNotice()
 console.log("\u00A9 " + YEAR.toString() + " Paywake Corporation")

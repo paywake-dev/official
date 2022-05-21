@@ -69,6 +69,10 @@ const removeWakeup = (index) => {
 }
 
 const toggleDay = (obj) => {
+  //FIXME: Paywake maintenance notice
+  __constructionNotice()
+  return;
+  //
   const index = parseInt(obj.id.split("-")[2])
   if (EXISTING_WAKEUPS[index]) {
     if (WAKEUPS_FETCHED) {
